@@ -16,5 +16,5 @@ public class SpringDatasourceProp {
     private String username = "root";
     @Value("${spring.datasource.password}")
     private String password;
-    private String driverClassName = "";
+    // private String driverClassName = "";
 }

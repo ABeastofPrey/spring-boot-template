@@ -11,13 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserServiceImpl implements UserService {
     @Autowired private UserMapper userMapper;
     @Override public List<User> findAll() {
-        User user = new User();
-        user.setId((long) 0);
-        user.setUsername("Admin");
-        user.setPassword("admin");
-        List<User> users = userMapper.findAll();
-        users.add(user);
-        return users;
+        return userMapper.findAll();
     }
 
     @Override public User findById(long id) {
