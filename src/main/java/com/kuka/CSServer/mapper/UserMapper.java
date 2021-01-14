@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     List<User> findAll();
     User       findById(long id);
+    void       createOne(User user);
 }

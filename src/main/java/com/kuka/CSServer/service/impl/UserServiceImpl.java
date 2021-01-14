@@ -26,4 +26,9 @@ public class UserServiceImpl implements UserService {
     public User findById(long id) {
         return userMapper.findById(id);
     }
+
+    @Override
+    public void createOne(User user) {
+        userMapper.createOne(user);
+    }
 }

@@ -6,4 +6,5 @@ import com.kuka.CSServer.entity.User;
 public interface UserService {
     List<User> findAll();
     User       findById(long id);
+    void       createOne(User user);
 }

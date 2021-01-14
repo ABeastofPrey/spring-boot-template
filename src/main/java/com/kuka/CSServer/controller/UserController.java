@@ -1,13 +1,16 @@
 package com.kuka.CSServer.controller;
 
 import java.util.List;
+import java.util.Map;
+
 import com.kuka.CSServer.entity.User;
 import com.kuka.CSServer.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-// import java.util.concurrent.atomic.AtomicLong;
-// import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
@@ -33,6 +36,48 @@ public class UserController {
     @RequestMapping("/findById")
     public User getUserById(@RequestParam(value = "id", defaultValue = "0") long id) {
         return userService.findById(id);
+    }
+
+    // @PostMapping("/create")
+    // public User creatUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+    //     System.out.println(username + " " + password);
+    //     return this.user;
+    // }
+
+    // @PostMapping("/create")
+    // public User creatUser(@RequestParam Map<String, String> params) {
+    //     System.out.println(params.get("username") + " " + params.get("password"));
+    //     return this.user;
+    // }
+
+    // @PostMapping("/create")
+    // public User creatUser(User user) {
+    //     System.out.println(user.getUsername() + " " + user.getPassword());
+    //     return this.user;
+    // }
+
+
+    // For json data
+    // @PostMapping("/create")
+    // public User creatUser(@RequestBody Map<String, String> params) {
+    //     System.out.println(params.get("username") + " " + params.get("password"));
+    //     return this.user;
+    // }
+
+    @PostMapping("/createOne")
+    public User creatOneUser(@RequestBody User user) {
+        userService.createOne(user);
+        return user;
+    }
+
+    @PostMapping("/createMany")
+    public User creatManyUser(@RequestBody List<User> users) {
+        String result = "";
+        for(User user:users){
+            result += user.getUsername() + " " + user.getPassword() + "\n";
+        }
+        System.out.println(result);
+        return this.user;
     }
 
     // private static final String template = "Hello, %s!";

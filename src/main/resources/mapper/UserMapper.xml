@@ -11,15 +11,23 @@
   <sql id="Base_Column_List">
     id, username, password
   </sql>
+  <!-- find all -->
   <select id="findAll" resultType="User">
-      SELECT 
-      <include refid="Base_Column_List" />
-      FROM users
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM users
   </select>
+  <!-- find by id -->
   <select id="findById" parameterType="_long" resultMap="Base_Result_Map">
     SELECT 
     <include refid="Base_Column_List" />
     FROM users
     WHERE id = #{id,jdbcType=BIGINT}
   </select>
+
+  <insert id="createOne" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO users (username, password)
+    VALUES (#{username}, #{password})
+  </insert>
+
 </mapper>
