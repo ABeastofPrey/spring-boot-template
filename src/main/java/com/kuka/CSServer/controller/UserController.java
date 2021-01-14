@@ -20,9 +20,9 @@ public class UserController {
 
     public UserController() {
         user = new User();
-        // user.setId((long) 4);
-        // user.setUsername("Admin");
-        // user.setPassword("admin");
+        user.setId((long) 4);
+        user.setUsername("Admin");
+        user.setPassword("admin");
     }
 
     @RequestMapping("/findAll")
@@ -31,9 +31,8 @@ public class UserController {
     }
 
     @RequestMapping("/findById")
-    public User getUserById(@RequestParam(value = "id", defaultValue = "0") int id) {
-        System.out.println(id);
-        return user;
+    public User getUserById(@RequestParam(value = "id", defaultValue = "0") long id) {
+        return userService.findById(id);
     }
 
     // private static final String template = "Hello, %s!";

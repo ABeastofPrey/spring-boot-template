@@ -4,4 +4,36 @@
     <select id="findAll" resultType="User">
         SELECT * FROM users
     </select>
+
+    <sql id="Base_Column_List">
+      id, username, password
+    </sql>
+    <select id="findById" parameterType="_long" resultType="User">
+      SELECT 
+      <include refid="Base_Column_List" />
+      FROM users
+      WHERE id = #{id,jdbcType=BIGINT}
+    </select>
 </mapper>
+
+<!-- <mapper namespace="com.qikegu.demo.repository.UserMapper">
+  <resultMap id="BaseResultMap" type="com.qikegu.demo.model.User">
+    <constructor>
+      <idArg column="id" javaType="_long" jdbcType="BIGINT" />
+      <arg column="nickname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mobile" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="role" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, nickname, mobile, password, role
+  </sql>
+  <select id="findById" parameterType="_long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+</mapper> -->

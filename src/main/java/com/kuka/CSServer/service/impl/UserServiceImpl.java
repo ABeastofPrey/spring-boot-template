@@ -14,11 +14,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         User user = new User();
-        user.setId((long) 4);
+        user.setId((long) 0);
         user.setUsername("Admin");
         user.setPassword("admin");
         List<User> users = userMapper.findAll();
         users.add(user);
         return users;
+    }
+
+    @Override
+    public User findById(long id) {
+        return userMapper.findById(id);
     }
 }
