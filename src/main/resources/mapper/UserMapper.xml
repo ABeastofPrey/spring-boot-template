@@ -11,12 +11,14 @@
   <sql id="Base_Column_List">
     id, username, password
   </sql>
+
   <!-- find all -->
   <select id="findAll" resultType="User">
     SELECT 
     <include refid="Base_Column_List" />
     FROM users
   </select>
+
   <!-- find by id -->
   <select id="findById" parameterType="_long" resultMap="Base_Result_Map">
     SELECT 
@@ -25,10 +27,22 @@
     WHERE id = #{id,jdbcType=BIGINT}
   </select>
 
+  <!-- update user -->
+  <update id="updateOne" parameterType="User">
+    UPDATE USERS
+    <trim prefix="SET" suffixOverrides=",">
+      <if test="username!=null">username = #{username,jdbcType=VARCHAR},</if>
+      <if test="password!=null">password = #{password,jdbcType=VARCHAR}</if>
+    </trim>
+    WHERE id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- delete by id -->
   <delete id="deleteById">
-        DELETE FROM users WHERE id = #{id, jdbcType=BIGINT}
+    DELETE FROM users WHERE id = #{id, jdbcType=BIGINT}
   </delete>
 
+  <!-- create one -->
   <insert id="createOne" parameterType="User" useGeneratedKeys="true" keyProperty="id">
     INSERT INTO users (username, password)
     VALUES (#{username}, #{password})

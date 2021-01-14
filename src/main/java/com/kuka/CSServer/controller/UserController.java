@@ -7,7 +7,9 @@ import com.kuka.CSServer.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +30,7 @@ public class UserController {
         user.setPassword("admin");
     }
 
-    @RequestMapping("/findAll")
+    @GetMapping("/findAll")
     public List<User> findAll() {
         return userService.findAll();
     }
@@ -84,6 +86,12 @@ public class UserController {
     public String deleteUserById(@RequestParam("id") long id) {
         userService.deleteById(id);
         return "deleted";
+    }
+
+    @PutMapping("/updateOne")
+    public String updateOne(@RequestBody User user) {
+        userService.updateOne(user);
+        return "updated";
     }
 
     // private static final String template = "Hello, %s!";
