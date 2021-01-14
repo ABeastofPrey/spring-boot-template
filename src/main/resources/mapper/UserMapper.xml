@@ -25,6 +25,10 @@
     WHERE id = #{id,jdbcType=BIGINT}
   </select>
 
+  <delete id="deleteById">
+        DELETE FROM users WHERE id = #{id, jdbcType=BIGINT}
+  </delete>
+
   <insert id="createOne" parameterType="User" useGeneratedKeys="true" keyProperty="id">
     INSERT INTO users (username, password)
     VALUES (#{username}, #{password})

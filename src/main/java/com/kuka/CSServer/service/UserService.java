@@ -7,4 +7,5 @@ public interface UserService {
     List<User> findAll();
     User       findById(long id);
     void       createOne(User user);
+    void       deleteById(long id);
 }

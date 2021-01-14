@@ -7,6 +7,7 @@ import com.kuka.CSServer.entity.User;
 import com.kuka.CSServer.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,6 +79,12 @@ public class UserController {
         }
         System.out.println(result);
         return this.user;
+    }
+
+    @DeleteMapping("/deleteById")
+    public String deleteUserById(@RequestParam("id") long id) {
+        userService.deleteById(id);
+        return "deleted";
     }
 
     // private static final String template = "Hello, %s!";

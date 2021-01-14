@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserMapper userMapper;
-    @Override
-    public List<User> findAll() {
+    @Autowired private UserMapper userMapper;
+    @Override public List<User> findAll() {
         User user = new User();
         user.setId((long) 0);
         user.setUsername("Admin");
@@ -22,13 +20,15 @@ public class UserServiceImpl implements UserService {
         return users;
     }
 
-    @Override
-    public User findById(long id) {
+    @Override public User findById(long id) {
         return userMapper.findById(id);
     }
 
-    @Override
-    public void createOne(User user) {
+    @Override public void createOne(User user) {
         userMapper.createOne(user);
+    }
+
+    @Override public void deleteById(long id) {
+        userMapper.deleteById(id);
     }
 }
