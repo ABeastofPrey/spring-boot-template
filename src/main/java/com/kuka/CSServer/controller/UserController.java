@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 // import java.util.concurrent.atomic.AtomicLong;
 // import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/user")
@@ -16,9 +16,24 @@ public class UserController {
     @Autowired 
     private UserService userService;
 
+    private final User user;
+
+    public UserController() {
+        user = new User();
+        // user.setId((long) 4);
+        // user.setUsername("Admin");
+        // user.setPassword("admin");
+    }
+
     @RequestMapping("/findAll")
     public List<User> findAll() {
         return userService.findAll();
+    }
+
+    @RequestMapping("/findById")
+    public User getUserById(@RequestParam(value = "id", defaultValue = "0") int id) {
+        System.out.println(id);
+        return user;
     }
 
     // private static final String template = "Hello, %s!";
