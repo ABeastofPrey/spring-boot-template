@@ -23,3 +23,7 @@ mybatis:
   #开启驼峰命名
   configuration:
     map-underscore-to-camel-case: true
+
+jwt:
+  secret: my_secret_2021
+  expiration: 1800
