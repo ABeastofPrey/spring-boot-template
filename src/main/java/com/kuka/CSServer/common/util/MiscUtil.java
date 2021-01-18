@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
 public class MiscUtil {
-    static public Result getVAlidateError(BindingResult bindingResult) {
+    static public Result getValidateError(BindingResult bindingResult) {
         if(bindingResult.hasErrors() == false) return null;
         Map<String, String> fieldErrors = new HashMap<String, String>();
         for(FieldError error : bindingResult.getFieldErrors()) {

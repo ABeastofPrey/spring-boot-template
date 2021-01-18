@@ -15,7 +15,7 @@ public class RegisterRequest {
 
     @NotNull(message = "Name is required")
     @Size(min = 1, max = 20, message = "Name is between 1~20 charaters")
-    private String nickname;
+    private String username;
 
     @NotNull(message = "Password is required")
     @Size(min = 6, max = 16, message = "Password is between 6~16 charaters")
