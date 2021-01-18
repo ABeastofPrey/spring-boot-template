@@ -37,7 +37,7 @@ public class UserController {
     public ResponseEntity<Result> hello() {
         return ResponseEntity.status(HttpStatus.OK)
         .header("content-type", "application/json")
-        .body(new Result("Some Message"));
+        .body(new Result(HttpStatus.ACCEPTED, "Some Message"));
     }
 
     @GetMapping("/findAll")

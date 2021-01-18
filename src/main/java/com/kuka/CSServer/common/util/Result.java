@@ -17,17 +17,29 @@ public class Result implements Serializable {
     private static final Logger log = (Logger) LoggerFactory.getLogger(Result.class);
 
     private static final long serialVersionUID = -1802122468331526708L;
-    @Setter @Getter private HttpStatus status = HttpStatus.OK;
-    @Setter @Getter private String message = "Handling...";
-    @Setter @Getter private Map<String, Object> data = new HashMap<String, Object>();
+    @Setter
+    private HttpStatus status = HttpStatus.OK;
+    @Setter
+    @Getter
+    private String message = "Handling...";
+    @Setter
+    @Getter
+    private Map<String, Object> data = new HashMap<String, Object>();
 
-    public Result() { }
+    public Result() {
+    }
 
-    public Result(String message) { this.message = message; }
+    public Result(String message) {
+        this.message = message;
+    }
 
     public Result(HttpStatus status, String message) {
         this.status = status;
         this.message = message;
+    }
+
+    public int getStatus() {
+        return this.status.value();
     }
 
     public void putData(String key, Object value) {
