@@ -2,10 +2,13 @@ package com.kuka.CSServer.controller;
 
 import java.util.List;
 
+import com.kuka.CSServer.common.util.Result;
 import com.kuka.CSServer.entity.User;
 import com.kuka.CSServer.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +31,13 @@ public class UserController {
         user.setId((long) 4);
         user.setUsername("Admin");
         user.setPassword("admin");
+    }
+
+    @RequestMapping("/hi")
+    public ResponseEntity<Result> hello() {
+        return ResponseEntity.status(HttpStatus.OK)
+        .header("content-type", "application/json")
+        .body(new Result("Some Message"));
     }
 
     @GetMapping("/findAll")
