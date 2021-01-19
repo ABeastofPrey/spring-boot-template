@@ -3,6 +3,8 @@ package com.kuka.CSServer.common.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.xml.bind.DatatypeConverter;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -17,5 +19,13 @@ public class MiscUtil {
         Result ret = new Result(HttpStatus.UNPROCESSABLE_ENTITY, "Input error");
         ret.putData("fieldErrors", fieldErrors);
         return ret;
+    }
+
+    public static String toHexString(byte[] array) {
+        return DatatypeConverter.printHexBinary(array);
+    }
+
+    public static byte[] toByteArray(String s) {
+        return DatatypeConverter.parseHexBinary(s);
     }
 }

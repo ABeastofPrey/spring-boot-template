@@ -28,11 +28,14 @@ public class AuthController {
     @Autowired private AuthService authService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<Result> register (@Valid @RequestBody RegisterRequest register, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            Result res1 = MiscUtil.getValidateError(bindingResult);
-            return new ResponseEntity<Result>(res1, HttpStatus.UNPROCESSABLE_ENTITY);
-        }
+    public ResponseEntity<Result> register (
+        @Valid @RequestBody RegisterRequest register
+        // BindingResult bindingResult
+    ) {
+        // if (bindingResult.hasErrors()) {
+        //     Result res1 = MiscUtil.getValidateError(bindingResult);
+        //     return new ResponseEntity<Result>(res1, HttpStatus.UNPROCESSABLE_ENTITY);
+        // }
 
         Result res = new Result(HttpStatus.OK, "ok");
         return ResponseEntity.ok(res);

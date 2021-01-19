@@ -1,4 +1,4 @@
-name: 'cs server'
+name: 'spring boot template'
 
 version: 1.0.0.0
 
@@ -14,6 +14,16 @@ spring:
     username: root
     password: admin
     driverClassName: com.mysql.jdbc.Driver
+  mvc:
+    ## 让404错误抛出异常，需要同时设置spring.resources.add-mappings为false
+    #  让404错误抛出异常
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false #禁用静态资源的自动映射，如不禁用，不存在的url将被映射到/**，servlet不有机会抛出异常
+
+# logging:
+#   level:
+#     root: DEBUG
 
 #mybatis的相关配置
 mybatis:
