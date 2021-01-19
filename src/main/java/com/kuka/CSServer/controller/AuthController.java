@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kuka.CSServer.common.util.MiscUtil;
 import com.kuka.CSServer.common.util.Result;
 import com.kuka.CSServer.model.LoginRequest;
 import com.kuka.CSServer.model.RegisterRequest;
@@ -42,12 +40,8 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces="application/json")
-    public ResponseEntity<Result> login(@Valid @RequestBody LoginRequest authRequest, BindingResult bindingResult) throws AuthenticationException{
-		if(bindingResult.hasErrors()) {			
-			Result res = MiscUtil.getValidateError(bindingResult);
-			return new ResponseEntity<Result>(res, HttpStatus.UNPROCESSABLE_ENTITY);
-		}
-        final String token = authService.login(authRequest.getAccount(), authRequest.getPassword());
+    public ResponseEntity<Result> login(@Valid @RequestBody LoginRequest authRequest) throws AuthenticationException{
+		final String token = authService.login(authRequest.getAccount(), authRequest.getPassword());
         // Return the token
         Result res = new Result(HttpStatus.OK, "ok");
         res.putData("token", token);
