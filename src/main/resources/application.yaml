@@ -8,7 +8,9 @@ server:
   tomcat.max-threads: 0  
   tomcat.uri-encoding: UTF-8  
 
-spring: 
+spring:
+  profiles:
+    active: dev
   datasource:
     url: jdbc:mysql://localhost:3306/school
     username: root

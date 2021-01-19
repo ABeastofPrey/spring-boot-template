@@ -1,0 +1,5 @@
+profile:
+  name: prod
+
+server:
+  port: 8080
