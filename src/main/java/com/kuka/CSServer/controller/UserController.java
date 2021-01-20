@@ -2,11 +2,15 @@ package com.kuka.CSServer.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import com.kuka.CSServer.common.util.Result;
 import com.kuka.CSServer.entity.User;
 import com.kuka.CSServer.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,10 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
+@EnableAutoConfiguration
 @RequestMapping("/user")
 public class UserController {
     @Autowired 
     private UserService userService;
+
+    @Resource
+    private RedisTemplate<String, Object> redis;
 
     private final User user;
 
@@ -111,4 +119,14 @@ public class UserController {
     // public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
     //     return new Greeting(counter.incrementAndGet(), String.format(template, name));
     // }
+
+    @RequestMapping("/redis")
+    public String redis() throws Exception {
+        String key = "project-name";
+        redis.opsForValue().set(key, "spring-boot-redis-demo-value");
+
+        String value = (String) redis.opsForValue().get(key);
+
+        return value;
+    }
 }
