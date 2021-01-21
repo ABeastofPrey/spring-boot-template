@@ -1,4 +1,4 @@
-package com.kuka.CSServer;
+package com.kuka.springtemplate;
 
 public class Demo {
     public static void main(String[] args) {
