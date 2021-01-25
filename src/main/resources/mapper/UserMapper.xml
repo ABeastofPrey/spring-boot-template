@@ -56,7 +56,10 @@
   <!-- create one -->
   <insert id="createOne" parameterType="User" useGeneratedKeys="true" keyProperty="id">
     INSERT INTO users (username, password, phone)
-    VALUES (#{username}, #{password}, #{phone})
+    VALUES (#{username}, #{password}, #{phone});
+    <selectKey keyProperty="id" resultType="Long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
   </insert>
 
 </mapper>

@@ -85,9 +85,10 @@ public class UserController {
     // }
 
     @PostMapping("/createOne")
-    public User creatOneUser(@RequestBody User user) {
-        userService.createOne(user);
-        return user;
+    public Long creatOneUser(@RequestBody User user) {
+        long insert = userService.createOne(user);
+        System.out.println("执行成功条数: " + insert);
+        return user.getId();
     }
 
     @PostMapping("/createMany")

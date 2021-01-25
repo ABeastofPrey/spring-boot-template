@@ -6,7 +6,7 @@ import com.kuka.springtemplate.model.User;
 public interface UserService {
     List<User> findAll();
     User       findById(long id);
-    void       createOne(User user);
+    Long       createOne(User user);
     void       deleteById(long id);
     void       updateOne(User user);
 }

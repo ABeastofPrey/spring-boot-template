@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
         return userMapper.findById(id);
     }
 
-    @Override public void createOne(User user) {
-        userMapper.createOne(user);
+    @Override public Long createOne(User user) {
+        return userMapper.createOne(user);
     }
 
     @Override public void deleteById(long id) {
