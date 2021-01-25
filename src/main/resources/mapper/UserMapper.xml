@@ -9,6 +9,14 @@
       <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap> -->
+
+  <resultMap id="Base_Result_Map" type="com.kuka.springtemplate.model.User">
+    <result property="id" column="id"/>
+    <result property="username" column="username"/>
+    <result property="password" column="password"/>
+    <result property="phone" column="phone"/>
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, username, password, phone
   </sql>
@@ -21,8 +29,8 @@
   </select>
 
   <!-- find by id -->
-  <!-- <select id="findById" parameterType="_long" resultMap="Base_Result_Map"> -->
-  <select id="findById" parameterType="_long" resultType="User">
+  <select id="findById" parameterType="_long" resultMap="Base_Result_Map">
+  <!-- <select id="findById" parameterType="_long" resultType="User"> -->
     SELECT 
     <include refid="Base_Column_List" />
     FROM users

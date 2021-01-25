@@ -30,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public User register(User userToAdd) {
+    public User register(User user) {
         // 保存user到数据库
         return null;
     }
