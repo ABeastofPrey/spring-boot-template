@@ -42,7 +42,7 @@ spring:
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.kuka.springtemplate.entity
+  type-aliases-package: com.kuka.springtemplate.model
   #开启驼峰命名
   configuration:
     map-underscore-to-camel-case: true

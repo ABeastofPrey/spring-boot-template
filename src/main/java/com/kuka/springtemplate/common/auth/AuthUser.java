@@ -38,13 +38,14 @@ public class AuthUser implements UserDetails {
 	// 提供权限信息
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return getAuthoritiesByRole(getUser().getRole());
+		// return getAuthoritiesByRole(getUser().getRole());
+		return getAuthoritiesByRole("user");
 	}
 
 	// 提供账号名称
 	@Override
 	public String getUsername() {
-		return getUser().getMobile();
+		return getUser().getUsername();
 	}
 
 	// 提供密码

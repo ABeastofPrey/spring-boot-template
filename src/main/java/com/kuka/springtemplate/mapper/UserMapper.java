@@ -1,7 +1,7 @@
 package com.kuka.springtemplate.mapper;
 
 import java.util.List;
-import com.kuka.springtemplate.entity.User;
+import com.kuka.springtemplate.model.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

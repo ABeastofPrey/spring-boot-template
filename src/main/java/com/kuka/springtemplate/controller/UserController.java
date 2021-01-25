@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.kuka.springtemplate.common.util.Result;
-import com.kuka.springtemplate.entity.User;
+import com.kuka.springtemplate.model.User;
 import com.kuka.springtemplate.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +32,13 @@ public class UserController {
     @Resource
     private RedisTemplate<String, Object> redis;
 
-    private final User user;
+    // private final User user;
 
     public UserController() {
-        user = new User();
-        user.setId((long) 4);
-        user.setUsername("Admin");
-        user.setPassword("admin");
+        // user = new User();
+        // user.setId((long) 4);
+        // user.setUsername("Admin");
+        // user.setPassword("admin");
     }
 
     @RequestMapping("/hi")
@@ -91,13 +91,13 @@ public class UserController {
     }
 
     @PostMapping("/createMany")
-    public User creatManyUser(@RequestBody List<User> users) {
+    public void creatManyUser(@RequestBody List<User> users) {
         String result = "";
         for(User user:users){
             result += user.getUsername() + " " + user.getPassword() + "\n";
         }
         System.out.println(result);
-        return this.user;
+        // return this.user;
     }
 
     @DeleteMapping("/deleteById")

@@ -1,7 +1,7 @@
 package com.kuka.springtemplate.service.impl;
 
 import java.util.List;
-import com.kuka.springtemplate.entity.User;
+import com.kuka.springtemplate.model.User;
 import com.kuka.springtemplate.mapper.UserMapper;
 import com.kuka.springtemplate.service.UserService;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.findAll();
     }
 
-    @Cacheable(value = "user", key = "#id") // 表明对应方法的返回结果可以被缓存，首次调用后，下次就从缓存中读取结果，方法不会再被执行了。
+    // @Cacheable(value = "user", key = "#id") // 表明对应方法的返回结果可以被缓存，首次调用后，下次就从缓存中读取结果，方法不会再被执行了。
     @Override public User findById(long id) {
         return userMapper.findById(id);
     }

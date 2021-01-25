@@ -1,7 +1,7 @@
 package com.kuka.springtemplate.service;
 
 import java.util.List;
-import com.kuka.springtemplate.entity.User;
+import com.kuka.springtemplate.model.User;
 
 public interface UserService {
     List<User> findAll();

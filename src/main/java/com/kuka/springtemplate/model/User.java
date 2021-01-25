@@ -12,18 +12,17 @@ public class User {
 
     private String username;
 
-    private String mobile;
-
     private String password;
 
-    private String role;
+    private String phone;
 
-    public User(Long id, String username, String mobile, String password, String role) {
+    public User() { super(); }
+
+    public User(Long id, String username, String password, String phone) {
         this.id = id;
         this.username = username;
-        this.mobile = mobile;
         // @JsonProperty(access = Access.WRITE_ONLY) //在输出的Json数据中隐藏密码，只能输入不输出
         this.password = password;
-        this.role = role;
+        this.phone = phone;
     }
 }
