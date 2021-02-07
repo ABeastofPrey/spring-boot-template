@@ -15,7 +15,7 @@ spring:
     url: jdbc:mysql://localhost:3306/school
     username: root
     password: admin
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
   mvc:
     ## 让404错误抛出异常，需要同时设置spring.resources.add-mappings为false
     #  让404错误抛出异常
