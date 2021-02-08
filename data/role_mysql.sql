@@ -1,14 +1,14 @@
-CREATE DATABASE IF NOT EXISTS `school`;
+CREATE DATABASE IF NOT EXISTS `demo`;
 
-USE `school`;
+USE `demo`;
 
 CREATE TABLE IF NOT EXISTS `roles` (
     `id`   BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(50) NOT NULL,
+    `rolename` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Role table';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Role table';
 
-INSERT INTO `roles` (name) VALUES
+INSERT INTO `roles` (`rolename`) VALUES
 ('admin'),
 ('super'),
 ('normal');

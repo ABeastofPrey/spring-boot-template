@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS `demo`;
+
+USE `demo`;
+
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(50) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='User table';
+
+INSERT INTO `users` (`username`) VALUES ('USER 1'), ('USER 2'), ('USER 3');
+
+SELECT * FROM `users`;
