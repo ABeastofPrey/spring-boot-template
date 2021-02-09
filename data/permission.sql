@@ -8,6 +8,6 @@ CREATE TABLE IF NOT EXISTS `permissions` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='Permission table';
 
-INSERT INTO `permissions` (`permissionname`) VALUES ('admin'), ('assistant'), ('consumer');
+INSERT INTO `permissions` (`permissionname`) VALUES ('read'), ('write'), ('delete');
 
 SELECT * FROM `permissions`;

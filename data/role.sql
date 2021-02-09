@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 INSERT INTO `roles` (`rolename`) VALUES
 ('admin'),
-('super'),
-('normal');
+('assistant'),
+('consumer');
 
 SELECT * FROM `roles` LIMIT 30;
