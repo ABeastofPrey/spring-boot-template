@@ -10,14 +10,14 @@ public class PermissionMapperProvider {
             {
                 SELECT("p.id, p.permissionname");
 
-                // FROM("users as u");
+                FROM("users as u");
                 FROM("permissions as p");
                 FROM("user_role as ur");
                 FROM("role_permission as rp");
 
-                // WHERE("u.username = " + user.getUsername());
+                WHERE("u.username = \"" + user.getUsername() + "\"");
                 AND();
-                WHERE("ur.uid =2");
+                WHERE("ur.uid = u.id");
                 AND();
                 WHERE("ur.rid = rp.rid");
                 AND();
