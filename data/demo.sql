@@ -1,7 +1,7 @@
 USE `demo`;
 
 SELECT 
-    u.id, u.username, 
+    u.id userid, u.username, 
     r.rolename, 
     p.permissionname
 FROM 
