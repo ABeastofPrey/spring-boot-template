@@ -26,8 +26,7 @@ public class Result implements Serializable {
     @Getter
     private Map<String, Object> data = new HashMap<String, Object>();
 
-    public Result() {
-    }
+    public Result() { }
 
     public Result(String message) {
         this.message = message;
@@ -42,12 +41,14 @@ public class Result implements Serializable {
         return this.status.value();
     }
 
-    public void putData(String key, Object value) {
+    public Result putData(String key, Object value) {
         data.put(key, value);
+        return this;
     }
 
-    public void removeData(String key) {
+    public Result removeData(String key) {
         data.remove(key);
+        return this;
     }
 
     @Override

@@ -22,24 +22,36 @@ import org.springframework.web.bind.annotation.RestController;
 public class PermissionController {
     @Autowired
     private PermissionService permissionService;
-    @PostMapping("/byUser")
-    // public ResponseEntity<Result> getPermissionByUser(@RequestBody User user) {
-    public List<Permission> getPermissionByUser(@RequestBody User user) {
-        return permissionService.findByUser(user);
-        // return ResponseEntity.status(HttpStatus.OK)
-        //     .header("content-type", "application/json")
-        //     .body(
-        //         new Result(HttpStatus.ACCEPTED, "ok")
-        //     );
+    @PostMapping("/getPermissionByUser")
+    public ResponseEntity<Result> getPermissionByUser(@RequestBody User user) {
+        List<Permission> permissions = permissionService.findByUser(user);
+        return ResponseEntity.status(HttpStatus.OK)
+            .header("content-type", "application/json")
+            .body(
+                new Result(HttpStatus.ACCEPTED, "ok")
+                   .putData("permissions", permissions)
+            );
     }
 
     @GetMapping("/findAll") 
-    public List<Permission> findAll() {
-        return permissionService.findAll();
+    public ResponseEntity<Result> findAll() {
+        List<Permission> permissions = permissionService.findAll();
+        return ResponseEntity.status(HttpStatus.OK)
+        .header("content-type", "application/json")
+        .body(
+            new Result(HttpStatus.ACCEPTED, "ok")
+               .putData("permissions", permissions)
+        );
     }
 
     @GetMapping("/findById")
-    public Permission findById(@RequestParam(value = "id", defaultValue = "1") long id) {
-        return permissionService.findById(id);
+    public ResponseEntity<Result> findById(@RequestParam(value = "id", defaultValue = "1") long id) {
+        Permission permission = permissionService.findById(id);
+        return ResponseEntity.status(HttpStatus.OK)
+            .header("content-type", "application/json")
+            .body(
+                new Result(HttpStatus.ACCEPTED, "ok")
+                   .putData("permissions", permission)
+            );
     }
 }
