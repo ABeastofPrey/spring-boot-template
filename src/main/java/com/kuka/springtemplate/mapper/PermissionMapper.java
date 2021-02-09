@@ -3,6 +3,7 @@ package com.kuka.springtemplate.mapper;
 import java.util.List;
 
 import com.kuka.springtemplate.model.Permission;
+import com.kuka.springtemplate.model.User;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -12,6 +13,7 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 
 @Mapper
@@ -21,7 +23,7 @@ public interface PermissionMapper {
     int insert(Permission permission);
 
     @Delete("DELETE FROM permissions WHERE id = #{id}")
-    int delete(Permission permission);
+    int deleteById(long id);
 
     @Update("UPDATE permissions SET permissionname = #{permissionname} WHERE id = #{id}")
     int update(Permission permission);
@@ -36,4 +38,7 @@ public interface PermissionMapper {
     @Select("SELECT * FROM permissions")
     @ResultMap("permissionMap")
     List<Permission> findAll();
+
+    @SelectProvider(type = PermissionMapperProvider.class, method = "findByUser")
+    List<Permission> findByUser(User user);
 }
