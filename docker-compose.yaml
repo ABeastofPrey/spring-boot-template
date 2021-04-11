@@ -9,7 +9,7 @@ services:
     image: "mysql"
     container_name: sbt_mysql
     environment:
-      MYSQL_DATABASE: demodb
+      MYSQL_DATABASE: proddb
       MYSQL_USER: sbtuser
       MYSQL_PASSWORD: admin
       MYSQL_ROOT_PASSWORD: admin
@@ -26,7 +26,7 @@ services:
       - sbt-mysql
 #    restart: always
     build: .
-    command: java -jar /code/app.jar
+    command: ["java", "-jar", "/code/app.jar", "--spring.profiles.active=prod"]
     ports:
       - target: 8090
         published: 8090

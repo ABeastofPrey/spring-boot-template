@@ -5,7 +5,7 @@ MAINTAINER Rookie
 # ADD ./build/libs /code
 COPY ./build/libs/*.jar /code/app.jar
 WORKDIR /code
-CMD ["java", "-jar", "/code/app.jar"]
+CMD ["java", "-jar", "/code/app.jar", "--spring.profiles.active=prod"]
 
 # # VOLUME 指定了临时文件目录为/tmp。
 # # 其效果是在主机 /var/lib/docker 目录下创建了一个临时文件，并链接到容器的/tmp

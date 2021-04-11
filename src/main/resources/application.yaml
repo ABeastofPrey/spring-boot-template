@@ -12,13 +12,14 @@ spring:
   profiles:
     active: dev
   datasource:
-#    url: jdbc:mysql://localhost:3306/demo
-#    username: root
-#    password: Supervisor
+    url: jdbc:mysql://localhost:3305/demo
+    username: root
+    password: Supervisor
 
-    url: jdbc:mysql://sbt_mysql:3308/demodb?serverTimezone=UTC&max_allowed_packet=15728640
-    username: sbtuser
-    password: admin
+#    url: jdbc:mysql://sbt_mysql:3308/demodb?serverTimezone=UTC&max_allowed_packet=15728640
+#    username: sbtuser
+#    password: admin
+
     driverClassName: com.mysql.cj.jdbc.Driver
   mvc:
     ## 让404错误抛出异常，需要同时设置spring.resources.add-mappings为false
