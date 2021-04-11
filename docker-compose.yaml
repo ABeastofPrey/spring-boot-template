@@ -1,0 +1,44 @@
+version: "3.5"
+services:
+  sbt-redis:
+    image: "redis"
+    container_name: sbt_redis
+    networks:
+      - sbt-net
+  sbt-mysql:
+    image: "mysql"
+    container_name: sbt_mysql
+    environment:
+      MYSQL_DATABASE: demodb
+      MYSQL_USER: sbtuser
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_ROOT_HOST: '%'
+#      MYSQL_ROOT_HOST: '0.0.0.0'
+    ports:
+      - "3308:3306"
+    restart: always
+    networks:
+      - sbt-net
+  sbt-app:
+    depends_on:
+      - sbt-redis
+      - sbt-mysql
+#    restart: always
+    build: .
+    command: java -jar /code/app.jar
+    ports:
+      - target: 8090
+        published: 8090
+    networks:
+      - sbt-net
+    volumes:
+      - type: volume
+        source: sbt-vol
+        target: /code
+    expose:
+      - "8090"
+networks:
+  sbt-net:
+volumes:
+  sbt-vol:

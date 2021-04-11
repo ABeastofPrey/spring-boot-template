@@ -39,3 +39,8 @@ These additional references should also help you:
 * Authority management
 * Websocket service
 * File module
+
+## Commands
+apt-get install inetutils-ping
+apt-get install net-tools
+docker volume rm $(docker volume ls -q)

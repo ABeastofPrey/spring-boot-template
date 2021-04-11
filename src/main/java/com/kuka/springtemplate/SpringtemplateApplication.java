@@ -17,6 +17,6 @@ public class SpringtemplateApplication {
 
 	@GetMapping("/")
 	public String home() {
-		return "Hello world!";
+		return "Hello spring boot template!!";
 	}
 }

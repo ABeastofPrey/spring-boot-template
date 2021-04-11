@@ -1,4 +1,4 @@
-name: 'spring boot template'
+securityname: 'spring boot template'
 
 version: 1.0.0.0
 
@@ -12,8 +12,12 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:mysql://localhost:3306/demo
-    username: root
+#    url: jdbc:mysql://localhost:3306/demo
+#    username: root
+#    password: Supervisor
+
+    url: jdbc:mysql://sbt_mysql:3308/demodb?serverTimezone=UTC&max_allowed_packet=15728640
+    username: sbtuser
     password: admin
     driverClassName: com.mysql.cj.jdbc.Driver
   mvc:
