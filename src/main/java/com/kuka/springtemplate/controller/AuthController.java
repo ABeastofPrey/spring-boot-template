@@ -20,7 +20,7 @@ import com.kuka.springtemplate.service.AuthService;
 
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     @Autowired private AuthService authService;

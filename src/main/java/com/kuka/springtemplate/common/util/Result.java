@@ -24,7 +24,7 @@ public class Result implements Serializable {
     private String message = "Handling...";
     @Setter
     @Getter
-    private Map<String, Object> data = new HashMap<String, Object>();
+    private Map<String, Object> body = new HashMap<String, Object>();
 
     public Result() { }
 
@@ -42,17 +42,17 @@ public class Result implements Serializable {
     }
 
     public Result putData(String key, Object value) {
-        data.put(key, value);
+        body.put(key, value);
         return this;
     }
 
     public Result removeData(String key) {
-        data.remove(key);
+        body.remove(key);
         return this;
     }
 
     @Override
     public String toString() {
-        return "Result{" + "status=" + status + ", message='" + message + '\'' + ", data=" + data + '}';
+        return "Result{" + "status=" + status + ", message='" + message + '\'' + ", data=" + body + '}';
     }
 }
