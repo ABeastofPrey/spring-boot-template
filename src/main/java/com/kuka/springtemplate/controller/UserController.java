@@ -19,12 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired 
     private UserService userService;
@@ -49,9 +50,17 @@ public class UserController {
             .body(new Result(HttpStatus.ACCEPTED, "ok").putData("users", users));
     }
 
-    @RequestMapping("/findById")
+    @RequestMapping(value = "/findById", method = RequestMethod.GET)
     public User getUserById(@RequestParam(value = "id", defaultValue = "0") long id) {
         return userService.findById(id);
+    }
+
+    @GetMapping("/findByPhone")
+    public ResponseEntity<Result> getUserByPhone(@RequestParam(value = "phone") String phone) {
+        User user = userService.findByPhone(phone);
+        return ResponseEntity.status(HttpStatus.OK)
+            .header("content-type", "application/json")
+            .body(new Result(HttpStatus.ACCEPTED, "ok").putData("user", user));
     }
 
     // @PostMapping("/create")

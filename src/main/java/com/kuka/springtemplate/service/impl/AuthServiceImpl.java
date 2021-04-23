@@ -36,14 +36,14 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login(String username, String password) {
+    public String login(String account, String password) {
         // 认证用户，认证失败抛出异常，由JwtAuthError的commence类返回401
-        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
+        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(account, password);
         final Authentication authentication = authenticationManager.authenticate(upToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // 如果认证通过，返回jwt
-        final AuthUser userDetails = (AuthUser) userDetailsService.loadUserByUsername(username);
+        final AuthUser userDetails = (AuthUser) userDetailsService.loadUserByUsername(account);
         final String token = jwtUtil.generateToken(userDetails.getUser());
         return token;
     }

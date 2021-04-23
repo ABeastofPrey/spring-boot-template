@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='User table';
 
 INSERT INTO `users` (`username`, `password`, `phone`) VALUES 
+('USER 0', '123456', 13585845436),
 ('USER 1', 'admin1', 13585845432), 
 ('USER 2', 'admin2', 13584854321), 
 ('USER 3', 'admin3', 13884832812);

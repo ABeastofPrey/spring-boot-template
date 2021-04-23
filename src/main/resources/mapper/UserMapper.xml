@@ -37,6 +37,14 @@
     WHERE id = #{id,jdbcType=BIGINT}
   </select>
 
+  <!-- find by phone -->
+  <select id="findByPhone" parameterType="String" resultMap="Base_Result_Map">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM users
+    WHERE phone = #{phone, jdbcType=VARCHAR}
+  </select>
+
   <!-- update user -->
   <update id="updateOne" parameterType="User">
     UPDATE USERS

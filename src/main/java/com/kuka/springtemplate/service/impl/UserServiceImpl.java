@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.findById(id);
     }
 
+    // @Cacheable(value = "user", key = "#phone")
+    @Override public User findByPhone(String phone) {
+        return userMapper.findByPhone(phone);
+    }
+
     @Override public Long createOne(User user) {
         return userMapper.createOne(user);
     }
