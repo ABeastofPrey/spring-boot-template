@@ -33,7 +33,7 @@ public class PermissionController {
             );
     }
 
-    @GetMapping("/findAll") 
+    @GetMapping("/all") 
     public ResponseEntity<Result> findAll() {
         List<Permission> permissions = permissionService.findAll();
         return ResponseEntity.status(HttpStatus.OK)

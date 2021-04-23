@@ -32,14 +32,7 @@ public class UserController {
     @Resource
     private RedisTemplate<String, Object> redis;
 
-    // private final User user;
-
-    public UserController() {
-        // user = new User();
-        // user.setId((long) 4);
-        // user.setUsername("Admin");
-        // user.setPassword("admin");
-    }
+    public UserController() { }
 
     @RequestMapping("/hi")
     public ResponseEntity<Result> hello() {
@@ -48,9 +41,12 @@ public class UserController {
         .body(new Result(HttpStatus.ACCEPTED, "Some Message"));
     }
 
-    @GetMapping("/findAll")
-    public List<User> findAll() {
-        return userService.findAll();
+    @GetMapping("/all")
+    public ResponseEntity<Result> findAll() {
+        List<User> users = userService.findAll();
+        return ResponseEntity.status(HttpStatus.OK)
+            .header("content-type", "application/json")
+            .body(new Result(HttpStatus.ACCEPTED, "ok").putData("users", users));
     }
 
     @RequestMapping("/findById")
