@@ -39,7 +39,7 @@ public class UserController {
     public ResponseEntity<Result> hello() {
         return ResponseEntity.status(HttpStatus.OK)
         .header("content-type", "application/json")
-        .body(new Result(HttpStatus.ACCEPTED, "Some Message"));
+        .body(new Result(HttpStatus.OK, "Some Message"));
     }
 
     @GetMapping("/all")
@@ -47,7 +47,7 @@ public class UserController {
         List<User> users = userService.findAll();
         return ResponseEntity.status(HttpStatus.OK)
             .header("content-type", "application/json")
-            .body(new Result(HttpStatus.ACCEPTED, "ok").putData("users", users));
+            .body(new Result(HttpStatus.OK, "ok").putData("users", users));
     }
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
@@ -60,7 +60,7 @@ public class UserController {
         User user = userService.findByPhone(phone);
         return ResponseEntity.status(HttpStatus.OK)
             .header("content-type", "application/json")
-            .body(new Result(HttpStatus.ACCEPTED, "ok").putData("user", user));
+            .body(new Result(HttpStatus.OK, "ok").putData("user", user));
     }
 
     // @PostMapping("/create")
