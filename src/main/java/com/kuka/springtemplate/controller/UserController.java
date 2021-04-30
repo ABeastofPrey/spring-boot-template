@@ -51,8 +51,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/findById", method = RequestMethod.GET)
-    public User getUserById(@RequestParam(value = "id", defaultValue = "0") long id) {
-        return userService.findById(id);
+    public ResponseEntity<Result> getUserById(@RequestParam(value = "id", defaultValue = "0") long id) {
+        User user = userService.findById(id);
+        return ResponseEntity.status(HttpStatus.OK)
+            .header("content-type", "application/json")
+            .body(new Result(HttpStatus.OK, "ok").putData("user", user));
     }
 
     @GetMapping("/findByPhone")
