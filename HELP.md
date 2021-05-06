@@ -44,3 +44,6 @@ These additional references should also help you:
 apt-get install inetutils-ping
 apt-get install net-tools
 docker volume rm $(docker volume ls -q)
+
+tasklist /fi "imagename eq nginx.exe" 
+taskkill /f /t /im nginx.exe
